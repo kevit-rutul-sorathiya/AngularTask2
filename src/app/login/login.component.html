@@ -1,0 +1,32 @@
+ <div class="mainDiv">
+   <section>
+     <div class="header">
+       <h2>Login</h2>
+     </div>
+     <div  class="invalid" *ngIf="emptyString">Enter first email and password</div>
+     <div  class="invalid" *ngIf="invalid">invalid email or password</div>
+     <form (ngSubmit)="onSubmit(f)"  #f="ngForm">
+       <div class="row card-field">
+         <div class="col-xs-12">
+           <div class="form-group">
+             <label for="email">Email address</label>
+             <input type="text" id="email" name="email" class="form-control" placeholder="Enter mail" ngModel required>
+           </div>
+         </div>
+       </div>
+       <div class="row card-field">
+         <div class="col-xs-12">
+           <div class="form-group">
+             <label for="password">Password</label>
+             <input type="text" id="password" name="password" class="form-control" placeholder="Enter password" ngModel required>
+           </div>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-xs-12">
+           <button type="submit" class="btn btn-success btn-block btn-sm"  >Sign in</button>
+         </div>
+       </div>
+     </form>
+   </section>
+ </div>

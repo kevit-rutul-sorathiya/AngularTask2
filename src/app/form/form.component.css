@@ -1,0 +1,90 @@
+.formMainDiv{
+  display: grid;
+  align-items: center;
+
+  background-size: cover;
+  background-image: url("https://cdn.wallpapersafari.com/59/77/tPcOg2.png");
+  height: 100%;
+}
+
+section{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("https://wallpaperaccess.com/full/2155720.jpg");
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-inline: auto;
+  width: 80%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 600px;
+  overflow-y: auto;
+}
+
+input{
+  border-radius: 5px;
+  border-color:silver ;
+}
+
+input:focus{
+  box-shadow: none;
+}
+
+textarea:focus{
+  box-shadow: none;
+}
+
+.inlineTwoField{
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr
+}
+
+.contentHeader {
+  border-bottom: 2px solid #78b4d7;
+  width: fit-content;
+}
+
+input::placeholder{
+  font-size: smaller;
+}
+
+textarea::placeholder{
+  font-size: smaller;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #938f8f;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #938f8f;
+}
+
+.red{
+  color: #f33232;
+}
+
+.inputRed{
+  border-color: #f33232;
+}
+
+.ng-valid{
+  border-color: silver;
+ }
+
+

@@ -1,0 +1,72 @@
+<div class="mainDiv">
+  <section *ngFor="let user of userArray" >
+    <table class=" table  table-striped" >
+      <tbody>
+      <tr>
+        <td>Name :</td>
+        <td>{{user.name}}</td>
+      </tr>
+      <tr>
+        <td>BirthDate :</td>
+        <td>{{user.birthDate | date }}</td>
+      </tr>
+      <tr *ngIf="user.address.length">
+        <td>Address :</td>
+        <td>{{user.address}}</td>
+      </tr>
+      <tr>
+        <td>Gender :</td>
+        <td>{{user.gender}}</td>
+      </tr>
+      <tr *ngIf="s.length">
+        <td>Hobbies :</td>
+        <td>{{ s }}</td>
+      </tr>
+      <tr>
+        <td>Email :</td>
+        <td>{{user.email}}</td>
+      </tr>
+      <tr>
+        <td>Phone Number :</td>
+        <td>{{user.phoneNumber}}</td>
+      </tr>
+      <tr>
+        <td>School Name :</td>
+        <td>{{user.schoolName}}</td>
+      </tr>
+      <tr>
+        <td>SSC Percentage :</td>
+        <td>{{user.sscPercentage}}</td>
+      </tr>
+      <tr>
+        <td>HSC Percentage :</td>
+        <td>{{user.hscPercentage}}</td>
+      </tr>
+      <tr>
+        <td>College Name :</td>
+        <td>{{user.collegeName}}</td>
+      </tr>
+      <tr>
+        <td>B.Tech CGPA :</td>
+        <td>{{user.btechCGPA}}</td>
+      </tr>
+      <tr *ngIf="user.mtechCGPA.length">
+        <td>M.Tech CGPA :</td>
+        <td>{{user.mtechCGPA}}</td>
+      </tr>
+      <tr *ngIf="user.summary.length">
+        <td>Summary :</td>
+        <td>{{user.summary}}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-primary btn-sm editButton" (click)="onEdit(user.userID)">Edit</button>
+          <button class="btn btn-danger btn-sm backButton">
+            <a [routerLink]="['/form']"  routerLinkActive="active">Back</a>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

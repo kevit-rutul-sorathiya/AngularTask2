@@ -1,0 +1,71 @@
+*{
+  font-family: 'Fira Code',monospace;
+}
+.mainDiv {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url("https://media.istockphoto.com/photos/light-blue-watercolor-background-picture-id1301156172?b=1&k=20&m=1301156172&s=170667a&w=0&h=Ag7FeKGlohIwsKuJqTU180CL01lSGQieqEWv6mKK4n4=");
+  background-repeat: no-repeat;
+  background-size: cover;
+}/**/
+section{
+  background-color:white;
+  padding: 60px 40px;
+  border-radius: 10px;
+  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+
+.header{
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.card-field{
+  margin-top: 5px;
+  margin-bottom:5px ;
+}
+
+label , h3{
+  color: #363636;
+}
+
+label{
+  margin-bottom: 0px;
+}
+
+input{
+  border-radius: 0px;
+  border-bottom-color: black;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+input:focus{
+  border-bottom-color: #3AB0FF;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  box-shadow: none;
+}
+
+button{
+  margin-top: 15px;
+  background-color: #3a3939;
+  border: none;
+}
+button:hover{
+  background-color: #3AB0FF;
+  border: none;
+}
+button:focus{
+  box-shadow: none;
+}
+
+.invalid{
+  color: red;
+  font-size:smaller;
+  font-weight: 500;
+}
