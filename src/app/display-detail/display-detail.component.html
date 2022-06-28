@@ -1,6 +1,6 @@
 <div class="mainDiv">
-  <section *ngFor="let user of userArray" >
-    <table class=" table  table-striped" >
+  <section class="mainDiv__userdetailcard" *ngFor="let user of userArray" >
+    <table class=" table table-striped" >
       <tbody>
       <tr>
         <td>Name :</td>
@@ -8,7 +8,7 @@
       </tr>
       <tr>
         <td>BirthDate :</td>
-        <td>{{user.birthDate | date }}</td>
+        <td>{{user.dob | date }}</td>
       </tr>
       <tr *ngIf="user.address.length">
         <td>Address :</td>
@@ -18,9 +18,9 @@
         <td>Gender :</td>
         <td>{{user.gender}}</td>
       </tr>
-      <tr *ngIf="s.length">
+      <tr >
         <td>Hobbies :</td>
-        <td>{{ s }}</td>
+        <td>{{ user.hobbies }}</td>
       </tr>
       <tr>
         <td>Email :</td>
@@ -60,9 +60,9 @@
       </tr>
       <tr>
         <td colspan="2">
-          <button class="btn btn-primary btn-sm editButton" (click)="onEdit(user.userID)">Edit</button>
+          <button class="btn btn-primary btn-sm editButton" (click)="onEdit(user.userId)">Edit</button>
           <button class="btn btn-danger btn-sm backButton">
-            <a [routerLink]="['/form']"  routerLinkActive="active">Back</a>
+            <a class="btn--white" [routerLink]="['/form']"  routerLinkActive="active">Back</a>
           </button>
         </td>
       </tr>

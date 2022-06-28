@@ -1,13 +1,12 @@
-.formMainDiv{
+.maindiv{
   display: grid;
   align-items: center;
-
   background-size: cover;
   background-image: url("https://cdn.wallpapersafari.com/59/77/tPcOg2.png");
   height: 100%;
 }
 
-section{
+.maindiv__formsection{
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("https://wallpaperaccess.com/full/2155720.jpg");
@@ -15,42 +14,34 @@ section{
   border-radius: 10px;
   box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-inline: auto;
-  width: 80%;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  width: 70%;
   height: 600px;
   overflow-y: auto;
 }
 
-input{
+.inputfield{
   border-radius: 5px;
   border-color:silver ;
 }
 
-input:focus{
+.inputfield:focus , .inputtextarea:focus, .inputradiobutton:focus, .inputcheckbox:focus {
   box-shadow: none;
-}
-
-textarea:focus{
-  box-shadow: none;
+  border-color: #3AB0FF;
 }
 
 .inlineTwoField{
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr
+  grid-column-gap:20px;
+  grid-template-columns: 1fr 1fr;
 }
 
-.contentHeader {
+.maindiv__contentHeader {
   border-bottom: 2px solid #78b4d7;
   width: fit-content;
 }
 
-input::placeholder{
-  font-size: smaller;
-}
-
-textarea::placeholder{
+.inputfield::placeholder , .inputtextarea::placeholder{
   font-size: smaller;
 }
 
@@ -75,16 +66,72 @@ textarea::placeholder{
   background: #938f8f;
 }
 
-.red{
+.redtext{
   color: #f33232;
 }
 
-.inputRed{
+.inputfieldred{
   border-color: #f33232;
 }
 
 .ng-valid{
   border-color: silver;
  }
+
+/*input[type="date"]::-webkit-calendar-picker-indicator {*/
+/*  background: transparent;*/
+/*  bottom: 0;*/
+/*  color: transparent;*/
+/*  cursor: pointer;*/
+/*  height: auto;*/
+/*  left: 0;*/
+/*  position: absolute;*/
+/*  right: 0;*/
+/*  top: 0;*/
+/*  width: auto;*/
+/*}*/
+
+
+@media (max-width: 1024px){
+  .maindiv{
+    position: fixed;
+    display: grid;
+    align-items: center;
+    background-size: cover;
+    background-image: url("https://cdn.wallpapersafari.com/59/77/tPcOg2.png");
+    height: 100%;
+  }
+}
+
+@media (max-width: 600px){
+  .maindiv{
+    position: fixed;
+    display: grid;
+    align-items: center;
+    background-size: cover;
+    background-image: url("https://cdn.wallpapersafari.com/59/77/tPcOg2.png");
+    height: 100%;
+  }
+
+  .maindiv__formsection{
+    padding: 30px;
+    width: 90%;
+  }
+
+  .inlineTwoField{
+    display:block;
+  }
+
+  .inlineTwoButton{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-column-gap:20px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .display-block{
+    display: block;
+  }
+}
 
 

@@ -5,7 +5,7 @@
   padding: 30px;
 }
 
-section{
+.mainDiv__userdetailcard{
   box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
   width: 500px;
@@ -22,11 +22,11 @@ section{
   left: 150px;
 }
 
-.backButton a{
+.btn--white{
   color: white;
   text-decoration: none;
 }
 
-a:hover{
+.btn--white:hover{
   color:white;
 }

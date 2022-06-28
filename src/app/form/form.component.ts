@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, ElementRef, OnInit} from '@angular/core';
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import { Router} from "@angular/router";
 import {DataTransferService} from "../data-transfer.service";
-
+import { userDetailObject } from './userDetailObject';
+declare var $: any;
 
 @Component({
   selector: 'app-form',
@@ -11,25 +12,24 @@ import {DataTransferService} from "../data-transfer.service";
 })
 export class FormComponent implements OnInit {
 
-  uerArray : any =[];
+  userArray : any =[];
   userDetailObject : userDetailObject = {
-    userID:0,
     name:'',
-    birthDate:'',
+    dob:'',
     address:'',
     gender: '',
-    hobbies:'',
+    hobbies:[],
     email: '',
     phoneNumber:'',
     schoolName:'',
     sscPercentage:'',
     hscPercentage: '',
-    collegeName:'',
-    btechCGPA:'',
+    collegeName: '',
+    btechCGPA: '',
     mtechCGPA: '',
     summary:''
   }
-
+  todayDate=new Date().toISOString().split("T")[0];
   Hobbies=[
     {
       name: 'cricket',
@@ -51,10 +51,8 @@ export class FormComponent implements OnInit {
       name:'Hockey',
       checked:false
     }]
-
   submitted = false;
   userDetailForm !: FormGroup;
-
   userId: number =0;
   arrayIndex:number=0;
 
@@ -64,103 +62,129 @@ export class FormComponent implements OnInit {
     this._patchValues();
 
     if(dataTransferService.editMode){
-
       // @ts-ignore
-      this.userId=this.router.getCurrentNavigation().extras.state.id
-      console.log(this.userId)
-      this.uerArray= dataTransferService.getArray()
-      console.log(this.uerArray)
-        for(let i=0;i<this.uerArray.length;i++){
-          console.log("hi")
-          console.log(this.uerArray.length)
-          if(this.uerArray[i].userID === this.userId){
-            this.arrayIndex=i;
-            this.userDetailForm.setValue({
-              name:this.uerArray[i].name,
-              dob:this.uerArray[i].birthDate,
-              address:this.uerArray[i].address,
-              gender:this.uerArray[i].gender,
-              hobbies:this.uerArray[i].hobbies,
-              email:this.uerArray[i].email,
-              phoneNumber:this.uerArray[i].phoneNumber,
-              schoolName:this.uerArray[i].schoolName,
-              sscPercentage:this.uerArray[i].sscPercentage,
-              hscPercentage:this.uerArray[i].hscPercentage,
-              collegeName:this.uerArray[i].collegeName,
-              btechCGPA:this.uerArray[i].btechCGPA,
-              mtechCGPA:this.uerArray[i].mtechCGPA,
-              summary:this.uerArray[i].summary
-            })
+      this.userId=this.router.getCurrentNavigation().extras.state.userId
+      this.userArray= dataTransferService.getUserArray()
+      for(let i=0;i<this.userArray.length;i++){
+        if(this.userArray[i].userId === this.userId){
+          this.arrayIndex=i;
+          for(let hobbie of this.Hobbies){
+            for(let h of this.userArray[i].hobbies){
+              if(hobbie.name === h){
+                hobbie.checked=true;
+              }
+            }
+          }
+          this.userArray[i].hobbies=this.Hobbies;
+          this.userDetailForm.patchValue(this.userArray[i])
             break;
           }
         }
     }
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   private initForm(){
     this.userDetailForm=new FormGroup({
-      'name':new FormControl('',[Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]),
-      'dob':new FormControl('',Validators.required),
-      'address':new FormControl(''),
-      'gender':new FormControl('',Validators.required),
-      'hobbies':new FormArray([]),
-      'email':new FormControl('',[Validators.required,Validators.email]),
-      'phoneNumber':new FormControl('',[Validators.required, Validators.pattern('^[0-9]+$'),Validators.maxLength(10)]),
-      'schoolName':new FormControl('',[Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]),
-      'sscPercentage':new FormControl('',[Validators.required,Validators.pattern('([1-9]|[1-9][0-9]|100)')]),
-      'hscPercentage':new FormControl('',[Validators.required,Validators.pattern('([1-9]|[1-9][0-9]|100)')]),
-      'collegeName':new FormControl( '',[Validators.required, Validators.minLength(2), Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]),
-      'btechCGPA':new FormControl('',[Validators.required,Validators.pattern('^[0-9]+\\.[0-9]+$')]),
-      'mtechCGPA':new FormControl('',Validators.pattern('^[0-9]+\\.[0-9]+$')),
-      'summary':new FormControl('')
+      'name':new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern('[a-zA-Z ]*$')]
+      ),
+      'dob':new FormControl(
+        '',
+        Validators.required
+      ),
+      'address':new FormControl(
+        ''
+      ),
+      'gender':new FormControl(
+        '',
+        Validators.required
+      ),
+      'hobbies':new FormArray(
+        []
+      ),
+      'email':new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ),
+      'phoneNumber':new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-9]+$'),
+          Validators.minLength(10),
+          Validators.maxLength(10)]
+      ),
+      'schoolName':new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern('[a-zA-Z ]*$')]
+      ),
+      'sscPercentage':new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(5),
+        // ^100(\.[0]{1,2})?|([0-9]|[1-9][0-9])(\.[0-9]{1,2})?$
+          Validators.pattern('^(35|36|37|38|39|[4-9][0-9]([.][0-9]{1,2})*|100)$')]
+      ),
+      'hscPercentage':new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(5),
+          Validators.pattern('^(35|36|37|38|39|[4-9][0-9]([.][0-9]{1,2})*|100)$')]
+      ),
+      'collegeName':new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern('^[_A-z0-9]*((-|\s)*[_A-z0-9])*$')]
+      ),
+      'btechCGPA':new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(4),
+          Validators.pattern('[0-9]{1}\\.[0-9]+|10.0$')]
+      ),
+      'mtechCGPA':new FormControl(
+        '',
+        [
+          Validators.maxLength(4),
+          Validators.pattern('[0-9]{1}\\.[0-9]+|10.0$')
+         ]
+      ),
+      'summary':new FormControl(
+        ''
+      )
     })
   }
 
   onSubmit() {
     if(!this.userDetailForm.valid){
-      this.submitted=true
-      alert('Enter appropriate details')
+      this.submitted=true;
+      alert('Enter appropriate details');
     }else if(this.dataTransferService.editMode){
-      this.uerArray[this.arrayIndex].name =  this.userDetailForm.value['name']
-      this.uerArray[this.arrayIndex].dob = this.userDetailForm.value['dob']
-      this.uerArray[this.arrayIndex].address = this.userDetailForm.value['address']
-      this.uerArray[this.arrayIndex].gender = this.userDetailForm.value['gender']
-      this.uerArray[this.arrayIndex].hobbies = this.userDetailForm.value['hobbies']
-      this.uerArray[this.arrayIndex].email = this.userDetailForm.value['email']
-      this.uerArray[this.arrayIndex].phoneNumber = this.userDetailForm.value['phoneNumber']
-      this.uerArray[this.arrayIndex].schoolName = this.userDetailForm.value['schoolName']
-      this.uerArray[this.arrayIndex].sscPercentage = this.userDetailForm.value['sscPercentage']
-      this.uerArray[this.arrayIndex].hscPercentage = this.userDetailForm.value['hscPercentage']
-      this.uerArray[this.arrayIndex].collegeName = this.userDetailForm.value['collegeName']
-      this.uerArray[this.arrayIndex].btechCGPA = this.userDetailForm.value['btechCGPA']
-      this.uerArray[this.arrayIndex].mtechCGPA = this.userDetailForm.value['mtechCGPA']
-      this.uerArray[this.arrayIndex].summary = this.userDetailForm.value['summary']
+      this.userArray[this.arrayIndex]=this.userDetailForm.value;
+      this.dataTransferService.modifiedUserObject(this.arrayIndex,this.userArray[this.arrayIndex]);
       this.router.navigate(['display-detail']);
       this.dataTransferService.editMode=false;
     } else {
-      this.userDetailObject.userID=this.dataTransferService.id;
-      console.log(this.userDetailObject.userID)
-      this.userDetailObject.name = this.userDetailForm.value['name']
-      this.userDetailObject.birthDate = this.userDetailForm.value['dob']
-      this.userDetailObject.address = this.userDetailForm.value['address']
-      this.userDetailObject.gender = this.userDetailForm.value['gender']
-      this.userDetailObject.hobbies = this.userDetailForm.value['hobbies']
-      this.userDetailObject.email = this.userDetailForm.value['email']
-      this.userDetailObject.phoneNumber = this.userDetailForm.value['phoneNumber']
-      this.userDetailObject.schoolName = this.userDetailForm.value['schoolName']
-      this.userDetailObject.sscPercentage = this.userDetailForm.value['sscPercentage']
-      this.userDetailObject.hscPercentage = this.userDetailForm.value['hscPercentage']
-      this.userDetailObject.collegeName = this.userDetailForm.value['collegeName']
-      this.userDetailObject.btechCGPA = this.userDetailForm.value['btechCGPA']
-      this.userDetailObject.mtechCGPA = this.userDetailForm.value['mtechCGPA']
-      this.userDetailObject.summary = this.userDetailForm.value['summary']
-      this.dataTransferService.getObject(this.userDetailObject)
+      this.userDetailObject = this.userDetailForm.value;
+      this.dataTransferService.getUserObject(this.userDetailObject)
       this.router.navigate(['display-detail']);
-      this.dataTransferService.id++;
     }
   }
 
@@ -168,7 +192,7 @@ export class FormComponent implements OnInit {
     this.userDetailForm.reset();
   }
 
-  get f() {
+  get formControls() {
     return this.userDetailForm.controls;
   }
 
@@ -184,4 +208,8 @@ export class FormComponent implements OnInit {
     });
   }
 
+  showDatePicker() {
+    (document.getElementById("dob") as any).showPicker();
+  }
 }
+

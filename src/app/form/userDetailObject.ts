@@ -1,10 +1,9 @@
-interface userDetailObject {
-    userID:number;
+export interface userDetailObject {
     name:string;
-    birthDate:string;
+    dob:string;
     address:string;
     gender: string;
-    hobbies:string;
+    hobbies:string[];
     email: string;
     phoneNumber:string;
     schoolName:string;

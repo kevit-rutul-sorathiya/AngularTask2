@@ -1,7 +1,7 @@
 *{
   font-family: 'Fira Code',monospace;
 }
-.mainDiv {
+.maindiv{
   display: grid;
   justify-content: center;
   align-items: center;
@@ -10,14 +10,14 @@
   background-repeat: no-repeat;
   background-size: cover;
 }/**/
-section{
+.maindiv__signincard{
   background-color:white;
   padding: 60px 40px;
   border-radius: 10px;
   box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
 }
 
-.header{
+.maindiv__header  {
   margin-top: 5px;
   margin-bottom: 30px;
 }
@@ -27,15 +27,15 @@ section{
   margin-bottom:5px ;
 }
 
-label , h3{
+.inputfield{
   color: #363636;
 }
 
-label{
+.label{
   margin-bottom: 0px;
 }
 
-input{
+.inputfield{
   border-radius: 0px;
   border-bottom-color: black;
   border-top-color: transparent;
@@ -43,7 +43,7 @@ input{
   border-left-color: transparent;
 }
 
-input:focus{
+.inputfield:focus{
   border-bottom-color: #3AB0FF;
   border-top-color: transparent;
   border-right-color: transparent;
@@ -51,20 +51,20 @@ input:focus{
   box-shadow: none;
 }
 
-button{
+.signinbutton{
   margin-top: 15px;
   background-color: #3a3939;
   border: none;
 }
-button:hover{
+.signinbutton:hover{
   background-color: #3AB0FF;
   border: none;
 }
-button:focus{
+.signinbutton:focus{
   box-shadow: none;
 }
 
-.invalid{
+.maindiv__invalidinputmessage{
   color: red;
   font-size:smaller;
   font-weight: 500;

@@ -1,20 +1,36 @@
-import {Subject} from "rxjs";
-
-
 export class DataTransferService{
-  userDetailArray : string[] = []
+  userDetailArray :any = []
   editMode=false;
-  userEdit = new Subject<number>();
-  id:number=1;
+  userID:number=0;
+  userSelectedHobbieArray:Array<any>=[];
+  editedUserID:number=0;
 
-
-  getObject(object : any){
+  getUserObject(object : any){
+    object.userId= ++this.userID;
+    this.userSelectedHobbieArray=object.hobbies;
+    object.hobbies=[];
+    for(let i=0;i<this.userSelectedHobbieArray.length;i++){
+      if(this.userSelectedHobbieArray[i].checked){
+        object.hobbies.push(this.userSelectedHobbieArray[i].name);
+      }
+    }
     this.userDetailArray.push(object);
   }
 
-  getArray(){
+  getUserArray(){
     return this.userDetailArray;
   }
 
+  modifiedUserObject(index:number,object:any){
+    this.userDetailArray[index].userId=this.editedUserID;
+    this.userSelectedHobbieArray=object.hobbies;
+    object.hobbies=[];
+    for(let i=0;i<this.userSelectedHobbieArray.length;i++){
+      if(this.userSelectedHobbieArray[i].checked){
+        object.hobbies.push(this.userSelectedHobbieArray[i].name);
+      }
+    }
+    this.userDetailArray[index]=object;
+  }
 
 }

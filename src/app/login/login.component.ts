@@ -8,21 +8,20 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  invalid : boolean = false;
-  emptyString : boolean = false;
+  invalidInputField : boolean = false;
+  emptyInputField : boolean = false;
 
   constructor(private router:Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit(form:NgForm){
       if(form.value.email.length === 0 || form.value.password.length ===0 ){
-          this.emptyString = true;
+          this.emptyInputField = true;
       }else if(form.value.email === 'rutul.sorathiya@kevit.io' && form.value.password ===  '12345' ){
           this.router.navigate(['form'])
       }else{
-          this.invalid=true;
+          this.invalidInputField=true;
       }
   }
 

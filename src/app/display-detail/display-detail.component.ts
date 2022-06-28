@@ -9,30 +9,19 @@ import {Router} from "@angular/router";
 })
 export class DisplayDetailComponent implements OnInit {
 
-  s:string='';
   userArray: Array<any> = [];
-  constructor(readonly dataTransferService:DataTransferService,private router:Router) {
-  }
+  constructor(readonly dataTransferService:DataTransferService,private router:Router) {}
 
   ngOnInit(): void {
-    this.userArray = this.dataTransferService.getArray()
-
-    for(let i=0;i<this.userArray.length;i++) {
-      this.s='';
-      for(let j=0;j<this.userArray[i].hobbies.length;j++) {
-        if (this.userArray[i].hobbies[j].checked) {
-          this.s += this.userArray[i].hobbies[j].name+'  ';
-        }
-      }
-    }
+    this.userArray = this.dataTransferService.getUserArray()
   }
 
   onEdit(userID:number){
-        console.log(userID);
-      this.dataTransferService.editMode=true;
-      this.router.navigate(['form'],{state:{id:userID}});
-    // this.dataTransferService.userEdit.next(userID);
-
+    this.dataTransferService.editedUserID=userID;
+    this.dataTransferService.editMode=true;
+    this.router.navigate(['form'],{state:{userId:userID}});
   }
+
+
 
 }
