@@ -1,12 +1,17 @@
+import {DataStorageService} from "./data-storage.service";
+import {Injectable} from "@angular/core";
+
+@Injectable({
+  providedIn:'root'
+})
 export class DataTransferService{
-  userDetailArray :any = []
   editMode=false;
-  userID:number=0;
   userSelectedHobbieArray:Array<any>=[];
   editedUserID:number=0;
 
+  constructor(private dataStorageService:DataStorageService) {}
+
   getUserObject(object : any){
-    object.userId= ++this.userID;
     this.userSelectedHobbieArray=object.hobbies;
     object.hobbies=[];
     for(let i=0;i<this.userSelectedHobbieArray.length;i++){
@@ -14,15 +19,11 @@ export class DataTransferService{
         object.hobbies.push(this.userSelectedHobbieArray[i].name);
       }
     }
-    this.userDetailArray.push(object);
+    this.dataStorageService.postUserObjectOnServer(object)
   }
 
-  getUserArray(){
-    return this.userDetailArray;
-  }
-
-  modifiedUserObject(index:number,object:any){
-    this.userDetailArray[index].userId=this.editedUserID;
+  modifiedUserObject(object:any,id:number){
+    object.id=id;
     this.userSelectedHobbieArray=object.hobbies;
     object.hobbies=[];
     for(let i=0;i<this.userSelectedHobbieArray.length;i++){
@@ -30,7 +31,8 @@ export class DataTransferService{
         object.hobbies.push(this.userSelectedHobbieArray[i].name);
       }
     }
-    this.userDetailArray[index]=object;
+    this.dataStorageService.updateSingleUSerObject(object);
+
   }
 
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
   invalidInputField : boolean = false;
   emptyInputField : boolean = false;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private authService:AuthService) { }
 
   ngOnInit(): void {}
 
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
           this.emptyInputField = true;
       }else if(form.value.email === 'rutul.sorathiya@kevit.io' && form.value.password ===  '12345' ){
           this.router.navigate(['form'])
+          this.authService.isUserloggedIn=true;
       }else{
           this.invalidInputField=true;
       }

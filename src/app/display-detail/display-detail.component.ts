@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {DataTransferService} from "../data-transfer.service";
+import {DataTransferService} from "../services/data-transfer.service";
 import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
+import {DataStorageService} from "../services/data-storage.service";
 
 @Component({
   selector: 'app-display-detail',
@@ -9,19 +11,33 @@ import {Router} from "@angular/router";
 })
 export class DisplayDetailComponent implements OnInit {
 
-  userArray: Array<any> = [];
-  constructor(readonly dataTransferService:DataTransferService,private router:Router) {}
+  userArray:any = [];
+  constructor(readonly dataTransferService:DataTransferService,
+              private router:Router,
+              private dataStorageService:DataStorageService) {
+
+  }
 
   ngOnInit(): void {
-    this.userArray = this.dataTransferService.getUserArray()
+    console.log("init")
+    this.dataStorageService.getUserArray().subscribe(userArray=>{
+      console.log("event", userArray);
+      this.userArray = userArray;
+    })
   }
 
-  onEdit(userID:number){
-    this.dataTransferService.editedUserID=userID;
+  onEdit(objectID:number){
+    this.dataTransferService.editedUserID=objectID;
     this.dataTransferService.editMode=true;
-    this.router.navigate(['form'],{state:{userId:userID}});
+    this.router.navigate(['form'],{state:{userId:objectID}});
   }
 
+  onDeleteUserObject(id:number){
+    this.dataStorageService.deleteUserObject(id).subscribe(()=>alert("User successfully deleted"));
+    this.dataStorageService.getUserArray().subscribe(userArray=>{
+      this.userArray = userArray;
+    })
+  }
 
 
 }

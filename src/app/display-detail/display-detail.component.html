@@ -18,7 +18,7 @@
         <td>Gender :</td>
         <td>{{user.gender}}</td>
       </tr>
-      <tr >
+      <tr *ngIf="user.hobbies.length">
         <td>Hobbies :</td>
         <td>{{ user.hobbies }}</td>
       </tr>
@@ -60,13 +60,12 @@
       </tr>
       <tr>
         <td colspan="2">
-          <button class="btn btn-primary btn-sm editButton" (click)="onEdit(user.userId)">Edit</button>
-          <button class="btn btn-danger btn-sm backButton">
-            <a class="btn--white" [routerLink]="['/form']"  routerLinkActive="active">Back</a>
-          </button>
+          <button class="btn btn-primary btn-sm editButton" (click)="onEdit(user.id)">Edit</button>
+          <button class="btn btn-danger btn-sm backButton" (click)="onDeleteUserObject(user.id)">Delete</button>
         </td>
       </tr>
       </tbody>
     </table>
   </section>
 </div>
+<!--<a class="btn&#45;&#45;white" [routerLink]="['/form']"  routerLinkActive="active">Delete</a>-->

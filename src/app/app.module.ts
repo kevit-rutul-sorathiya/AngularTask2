@@ -7,7 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { FormComponent } from './form/form.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DisplayDetailComponent } from './display-detail/display-detail.component';
-import {DataTransferService} from "./data-transfer.service";
+import {DataTransferService} from "./services/data-transfer.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {DataTransferService} from "./data-transfer.service";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [DataTransferService],
   bootstrap: [AppComponent]
