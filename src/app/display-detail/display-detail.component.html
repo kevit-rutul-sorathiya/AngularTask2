@@ -1,68 +1,22 @@
 <div class="mainDiv">
-  <section class="mainDiv__userdetailcard" *ngFor="let user of userArray" >
-    <table class=" table table-striped" >
+  <section class="mainDiv__userdetailcard">
+    <table class="usertable table table-hover">
+      <thead>
+      <tr>
+        <th>Users</th>
+      </tr>
+      </thead>
       <tbody>
-      <tr>
-        <td>Name :</td>
+      <tr *ngFor="let user of userArray">
+        <th scope="row">{{user.id}}</th>
         <td>{{user.name}}</td>
-      </tr>
-      <tr>
-        <td>BirthDate :</td>
-        <td>{{user.dob | date }}</td>
-      </tr>
-      <tr *ngIf="user.address.length">
-        <td>Address :</td>
-        <td>{{user.address}}</td>
-      </tr>
-      <tr>
-        <td>Gender :</td>
-        <td>{{user.gender}}</td>
-      </tr>
-      <tr *ngIf="user.hobbies.length">
-        <td>Hobbies :</td>
-        <td>{{ user.hobbies }}</td>
-      </tr>
-      <tr>
-        <td>Email :</td>
-        <td>{{user.email}}</td>
-      </tr>
-      <tr>
-        <td>Phone Number :</td>
-        <td>{{user.phoneNumber}}</td>
-      </tr>
-      <tr>
-        <td>School Name :</td>
-        <td>{{user.schoolName}}</td>
-      </tr>
-      <tr>
-        <td>SSC Percentage :</td>
-        <td>{{user.sscPercentage}}</td>
-      </tr>
-      <tr>
-        <td>HSC Percentage :</td>
-        <td>{{user.hscPercentage}}</td>
-      </tr>
-      <tr>
-        <td>College Name :</td>
-        <td>{{user.collegeName}}</td>
-      </tr>
-      <tr>
-        <td>B.Tech CGPA :</td>
-        <td>{{user.btechCGPA}}</td>
-      </tr>
-      <tr *ngIf="user.mtechCGPA.length">
-        <td>M.Tech CGPA :</td>
-        <td>{{user.mtechCGPA}}</td>
-      </tr>
-      <tr *ngIf="user.summary.length">
-        <td>Summary :</td>
-        <td>{{user.summary}}</td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <button class="btn btn-primary btn-sm editButton" (click)="onEdit(user.id)">Edit</button>
-          <button class="btn btn-danger btn-sm backButton" (click)="onDeleteUserObject(user.id)">Delete</button>
+        <td>
+          <button class="btn btn-primary btn-sm float-end mx-1" (click)="onEdit(user.id)">Edit</button>
+          <button class="btn btn-danger btn-sm float-end" (click)="onUserDetail(user.id)">Detail</button>
         </td>
+      </tr>
+      <tr>
+        <td class="text-center" colspan="3"><button class="btn btn-dark btn-sm" (click)="onClickBackButton()">Back</button></td>
       </tr>
       </tbody>
     </table>

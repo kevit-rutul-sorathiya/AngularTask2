@@ -9,13 +9,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DisplayDetailComponent } from './display-detail/display-detail.component';
 import {DataTransferService} from "./services/data-transfer.service";
 import {HttpClientModule} from "@angular/common/http";
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     FormComponent,
-    DisplayDetailComponent
+    DisplayDetailComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

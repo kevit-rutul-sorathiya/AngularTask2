@@ -32,7 +32,5 @@ export class DataTransferService{
       }
     }
     this.dataStorageService.updateSingleUSerObject(object);
-
   }
-
 }

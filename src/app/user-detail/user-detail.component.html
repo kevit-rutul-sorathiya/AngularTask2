@@ -1,0 +1,70 @@
+<div class="mainDiv">
+  <section class="mainDiv__userdetailcard"  >
+    <table class=" table table-striped" >
+      <tbody>
+      <tr>
+        <td>Name :</td>
+        <td>{{userDetailObject.name}}</td>
+      </tr>
+      <tr>
+        <td>BirthDate :</td>
+        <td>{{userDetailObject.dob | date }}</td>
+      </tr>
+      <tr *ngIf="userDetailObject.address.length">
+        <td>Address :</td>
+        <td>{{userDetailObject.address}}</td>
+      </tr>
+      <tr>
+        <td>Gender :</td>
+        <td>{{userDetailObject.gender}}</td>
+      </tr>
+      <tr *ngIf="userDetailObject.hobbies.length">
+        <td>Hobbies :</td>
+        <td>{{ userDetailObject.hobbies }}</td>
+      </tr>
+      <tr>
+        <td>Email :</td>
+        <td>{{userDetailObject.email}}</td>
+      </tr>
+      <tr>
+        <td>Phone Number :</td>
+        <td>{{userDetailObject.phoneNumber}}</td>
+      </tr>
+      <tr>
+        <td>School Name :</td>
+        <td>{{userDetailObject.schoolName}}</td>
+      </tr>
+      <tr>
+        <td>SSC Percentage :</td>
+        <td>{{userDetailObject.sscPercentage}}</td>
+      </tr>
+      <tr>
+        <td>HSC Percentage :</td>
+        <td>{{userDetailObject.hscPercentage}}</td>
+      </tr>
+      <tr>
+        <td>College Name :</td>
+        <td>{{userDetailObject.collegeName}}</td>
+      </tr>
+      <tr>
+        <td>B.Tech CGPA :</td>
+        <td>{{userDetailObject.btechCGPA}}</td>
+      </tr>
+      <tr *ngIf="userDetailObject.mtechCGPA.length">
+        <td>M.Tech CGPA :</td>
+        <td>{{userDetailObject.mtechCGPA}}</td>
+      </tr>
+      <tr *ngIf="userDetailObject.summary.length">
+        <td>Summary :</td>
+        <td>{{userDetailObject.summary}}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-primary btn-sm editButton" (click)="onEdit(userDetailObject.id)">Edit</button>
+          <button class="btn btn-danger btn-sm backButton" (click)="onDeleteUserObject(userDetailObject.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

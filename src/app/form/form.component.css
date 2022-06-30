@@ -93,30 +93,20 @@
 
 
 @media (max-width: 1024px){
-  .maindiv{
-    position: fixed;
-    display: grid;
-    align-items: center;
+  .maindiv__formsection{
+    background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("https://cdn.wallpapersafari.com/59/77/tPcOg2.png");
-    height: 100%;
+    background-image: url("https://wallpaperaccess.com/full/2155720.jpg");
+    border-radius: 10px;
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 90%;
+    height: 600px;
+    overflow-y: auto;
   }
+
 }
 
 @media (max-width: 600px){
-  .maindiv{
-    position: fixed;
-    display: grid;
-    align-items: center;
-    background-size: cover;
-    background-image: url("https://cdn.wallpapersafari.com/59/77/tPcOg2.png");
-    height: 100%;
-  }
-
-  .maindiv__formsection{
-    padding: 30px;
-    width: 90%;
-  }
 
   .inlineTwoField{
     display:block;

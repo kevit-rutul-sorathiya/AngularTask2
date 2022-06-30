@@ -1,4 +1,7 @@
 <div class="container-fluid maindiv">
+  <div>
+    <button class="btn btn-primary btn-sm float-end" (click)="onAllUserClick()">All Users</button>
+  </div>
   <section class="maindiv__formsection">
     <form [formGroup]="userDetailForm" (ngSubmit)="onSubmit()">
       <div class="maindiv__contentHeader">
@@ -233,7 +236,7 @@
             <div class="form-group">
               <button
                 type="button"
-                class="btn btn-primary btn-sm"
+                class="btn btn-dark btn-sm"
                 (click)="onReset()">Reset</button>
             </div>
           </div>

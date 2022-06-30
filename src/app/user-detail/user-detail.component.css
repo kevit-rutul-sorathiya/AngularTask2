@@ -1,0 +1,32 @@
+.mainDiv{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.mainDiv__userdetailcard{
+  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  width: 500px;
+  margin-bottom: 15px;
+}
+
+.editButton{
+  position: relative;
+  left: 140px;
+}
+
+.backButton{
+  position: relative;
+  left: 150px;
+}
+
+.btn--white{
+  color: white;
+  text-decoration: none;
+}
+
+.btn--white:hover{
+  color:white;
+}

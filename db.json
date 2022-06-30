@@ -2,61 +2,44 @@
   "users": [
     {
       "name": "rutul",
-      "dob": "2001-11-14",
+      "dob": "2022-06-08",
       "address": "",
       "gender": "male",
       "hobbies": [
         "cricket",
-        "Basketball"
+        "Basketball",
+        "Football"
       ],
       "email": "rutul.sorathiya@kevit.io",
       "phoneNumber": "9574258707",
       "schoolName": "Alfred",
       "sscPercentage": "99.16",
-      "hscPercentage": "85.56",
+      "hscPercentage": "100",
       "collegeName": "DDIT",
       "btechCGPA": "7.58",
-      "mtechCGPA": "7.00",
+      "mtechCGPA": "7.54",
       "summary": "",
       "id": 1
     },
     {
       "name": "vivek",
-      "dob": "2022-06-07",
-      "address": "",
-      "gender": "male",
-      "hobbies": [
-        "cricket"
-      ],
-      "email": "asdf@45.com",
-      "phoneNumber": "9574258707",
-      "schoolName": "sdf",
-      "sscPercentage": "50",
-      "hscPercentage": "100",
-      "collegeName": "dfsad",
-      "btechCGPA": "7.58",
-      "mtechCGPA": "7.00",
-      "summary": "",
-      "id": 2
-    },
-    {
-      "name": "Tomato",
       "dob": "2022-06-01",
       "address": "",
       "gender": "male",
       "hobbies": [
-        "Basketball"
+        "Tabletennis",
+        "Hockey"
       ],
       "email": "rutul.sorathiya@kevit.io",
       "phoneNumber": "9574258707",
-      "schoolName": "sdf",
-      "sscPercentage": "50",
-      "hscPercentage": "100",
+      "schoolName": "Alfred",
+      "sscPercentage": "56.41",
+      "hscPercentage": "99.99",
       "collegeName": "dfsad",
       "btechCGPA": "7.58",
-      "mtechCGPA": "7.00",
+      "mtechCGPA": "7.54",
       "summary": "",
-      "id": 3
+      "id": 2
     }
   ]
 }

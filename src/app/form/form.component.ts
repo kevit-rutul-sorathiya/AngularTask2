@@ -213,5 +213,9 @@ export class FormComponent implements OnInit {
   showDatePicker() {
     (document.getElementById("dob") as any).showPicker();
   }
+
+  onAllUserClick(){
+    this.router.navigate(['display-detail']);
+  }
 }
 
